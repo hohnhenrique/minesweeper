@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campo Minado // detector de risco</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <main class="console">
+    <header class="console__header">
+      <div class="console__title">
+        <span class="console__bracket">[</span>
+        CAMPO&nbsp;MINADO
+        <span class="console__bracket">]</span>
+      </div>
+      <p class="console__subtitle">detector de risco // v1.1</p>
+      <div class="console__actions">
+        <button class="action-btn" id="manual-btn" type="button">
+          <span class="action-btn__icon">?</span> manual
+        </button>
+        <button class="action-btn" id="stats-btn" type="button">
+          <span class="action-btn__icon">#</span> estatísticas
+        </button>
+      </div>
+    </header>
+
+    <section class="hud" aria-label="painel de status">
+      <div class="hud__stat">
+        <span class="hud__label">minas</span>
+        <span class="hud__value" id="mine-count">010</span>
+      </div>
+
+      <button class="hud__face" id="reset-btn" aria-label="reiniciar jogo" title="reiniciar">
+        <span id="face-icon">◔</span>
+      </button>
+
+      <div class="hud__stat">
+        <span class="hud__label">tempo</span>
+        <span class="hud__value" id="timer">000</span>
+      </div>
+    </section>
+
+    <section class="difficulty" aria-label="nível de dificuldade">
+      <button class="difficulty__btn is-active" data-level="easy">fácil</button>
+      <button class="difficulty__btn" data-level="medium">médio</button>
+      <button class="difficulty__btn" data-level="hard">difícil</button>
+    </section>
+
+    <section class="board-wrapper">
+      <div class="board" id="board" role="grid" aria-label="tabuleiro do campo minado"></div>
+    </section>
+
+    <p class="status-line" id="status-line">clique para revelar &middot; botão direito para marcar</p>
+
+    <footer class="console__footer">
+      <a href="https://github.com/" target="_blank" rel="noopener noreferrer" id="repo-link">código-fonte</a>
+    </footer>
+  </main>
+
+  <div class="overlay" id="overlay">
+    <div class="overlay__panel">
+      <p class="overlay__message" id="overlay-message">FIM DE JOGO</p>
+      <p class="overlay__detail" id="overlay-detail"></p>
+      <button class="overlay__btn" id="overlay-btn">jogar novamente</button>
+    </div>
+  </div>
+
+  <div class="modal" id="manual-modal" aria-hidden="true">
+    <div class="modal__panel">
+      <div class="modal__header">
+        <h2 class="modal__title">manual de instruções</h2>
+        <button class="modal__close" id="manual-close" aria-label="fechar manual">✕</button>
+      </div>
+      <div class="modal__body">
+        <h3>objetivo</h3>
+        <p>
+          Revele todas as células que <strong>não</strong> contêm minas sem detonar
+          nenhuma. O número que aparece em uma célula revelada indica quantas
+          minas existem nas 8 células ao redor dela.
+        </p>
+
+        <h3>controles</h3>
+        <ul class="manual-list">
+          <li><strong>clique esquerdo</strong> — revela a célula</li>
+          <li><strong>clique direito</strong> — marca/desmarca uma bandeira (⚑) em uma célula suspeita</li>
+          <li><strong>teclado</strong> — navegue com Tab, pressione Enter/Espaço para revelar e F para marcar</li>
+        </ul>
+
+        <h3>regras</h3>
+        <ul class="manual-list">
+          <li>O primeiro clique <strong>nunca</strong> é uma mina — as minas só são posicionadas depois da sua primeira jogada.</li>
+          <li>Se você revelar uma célula com <strong>0</strong> minas ao redor, as células vizinhas são reveladas automaticamente (efeito cascata).</li>
+          <li>Células marcadas com bandeira não podem ser reveladas até serem desmarcadas.</li>
+          <li>O jogo termina em derrota se você revelar uma mina.</li>
+          <li>O jogo termina em vitória quando todas as células sem mina forem reveladas.</li>
+          <li>O contador de <strong>minas</strong> mostra quantas minas ainda não foram marcadas com bandeira (total de minas menos bandeiras usadas).</li>
+        </ul>
+
+        <h3>dificuldades</h3>
+        <ul class="manual-list">
+          <li><strong>fácil</strong> — tabuleiro 9×9 com 10 minas</li>
+          <li><strong>médio</strong> — tabuleiro 12×12 com 24 minas</li>
+          <li><strong>difícil</strong> — tabuleiro 16×12 com 40 minas</li>
+        </ul>
+
+        <h3>dica</h3>
+        <p>
+          Use a lógica dos números: se um número revelado já tem todas as suas
+          minas vizinhas marcadas com bandeira, todas as outras células ao redor
+          dele são seguras para revelar.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="stats-modal" aria-hidden="true">
+    <div class="modal__panel">
+      <div class="modal__header">
+        <h2 class="modal__title">estatísticas</h2>
+        <button class="modal__close" id="stats-close" aria-label="fechar estatísticas">✕</button>
+      </div>
+      <div class="modal__body" id="stats-body">
+        <!-- preenchido via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
