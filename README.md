@@ -1,28 +1,30 @@
-# Campo Minado — detector de risco
+# Minesweeper - risk detector
 
-Implementação do clássico Campo Minado (Minesweeper) em **JavaScript puro**, sem frameworks ou dependências externas. Tema visual inspirado em terminais de detecção retrô.
+https://hohnhenrique.github.io/minesweeper
 
-🎮 [Jogar online](#) — *substitua pelo link do GitHub Pages após o deploy*
+Implementation of the classic Minesweeper in **vanilla JavaScript**, with no frameworks or external dependencies. Visual theme inspired by retro detection terminals.
 
-## Funcionalidades
+🎮 [Play online](#) — *replace with the GitHub Pages link after deploy*
 
-- Três níveis de dificuldade: fácil (9×9, 10 minas), médio (12×12, 24 minas) e difícil (16×12, 40 minas)
-- Primeiro clique sempre seguro (as minas só são posicionadas depois da primeira jogada)
-- Revelação em cascata (flood fill) para áreas sem minas adjacentes
-- Marcação de bandeiras com o botão direito do mouse
-- Cronômetro e contador de minas restantes
-- Totalmente navegável por teclado (Tab para mover entre células, Enter/Espaço para revelar, F para marcar)
-- Responsivo, com suporte a `prefers-reduced-motion`
+## Features
 
-## Tecnologias
+- Three difficulty levels: easy (9×9, 10 mines), medium (12×12, 24 mines) and hard (16×12, 40 mines)
+- First click always safe (mines are only placed after the first move)
+- Cascading reveal (flood fill) for areas with no adjacent mines
+- Flag marking with the right mouse button
+- Timer and remaining mines counter
+- Fully keyboard navigable (Tab to move between cells, Enter/Space to reveal, F to flag)
+- Responsive, with `prefers-reduced-motion` support
+
+## Technologies
 
 - HTML5
-- CSS3 (variáveis CSS, grid layout)
-- JavaScript (ES6+, sem bibliotecas)
+- CSS3 (CSS variables, grid layout)
+- JavaScript (ES6+, no libraries)
 
-## Como rodar localmente
+## How to run locally
 
-Não há etapa de build. Basta abrir o arquivo `index.html` no navegador, ou rodar um servidor local simples:
+There is no build step. Just open the `index.html` file in the browser, or run a simple local server:
 
 ```bash
 # Python
@@ -32,36 +34,36 @@ python3 -m http.server 8000
 npx serve .
 ```
 
-Depois acesse `http://localhost:8000`.
+Then access `http://localhost:8000`.
 
-## Estrutura do projeto
+## Project structure
 
 ```
 minesweeper/
-├── index.html      # estrutura da página
-├── style.css        # estilos e tema visual
-├── script.js         # lógica do jogo
+├── index.html      # page structure
+├── style.css        # styles and visual theme
+├── script.js         # game logic
 └── README.md
 ```
 
-## Lógica do jogo
+## Game logic
 
-A lógica principal está em `script.js` e cobre:
+The core logic is in `script.js` and covers:
 
-- **Geração do tabuleiro**: matriz de células com estado (`mine`, `revealed`, `flagged`, `adjacent`)
-- **Posicionamento de minas**: aleatório, mas excluindo a célula clicada e suas vizinhas imediatas, garantindo que o primeiro clique nunca seja uma derrota
-- **Contagem de minas adjacentes**: para cada célula segura, conta quantas das 8 vizinhas contêm minas
-- **Flood fill**: revelação recursiva de células vazias conectadas
-- **Condição de vitória**: todas as células não-minadas reveladas
+- **Board generation**: matrix of cells with state (`mine`, `revealed`, `flagged`, `adjacent`)
+- **Mine placement**: random, but excluding the clicked cell and its immediate neighbors, ensuring the first click is never a loss
+- **Adjacent mine count**: for each safe cell, counts how many of the 8 neighbors contain mines
+- **Flood fill**: recursive reveal of connected empty cells
+- **Win condition**: all non-mined cells revealed
 
-## Possíveis melhorias futuras
+## Possible future improvements
 
-- Salvar recordes (atualmente o estado não persiste entre sessões)
-- Modo de dificuldade customizável (tamanho e quantidade de minas definidos pelo usuário)
-- Animações de revelação célula a célula
-- Suporte a toque duplo em dispositivos móveis para marcar bandeiras
+- Save high scores (currently the state doesn't persist between sessions)
+- Customizable difficulty mode (board size and mine count defined by the user)
+- Cell-by-cell reveal animations
+- Double-tap support on mobile devices to flag cells
 
-## Licença
+## License
 
-Livre para uso e modificação.
+Free to use and modify.
 # minesweeper
