@@ -4,7 +4,7 @@ https://hohnhenrique.github.io/minesweeper
 
 Implementation of the classic Minesweeper in **vanilla JavaScript**, with no frameworks or external dependencies. Visual theme inspired by retro detection terminals.
 
-🎮 [Play online](https://hohnhenrique.github.io/minesweeper) — *replace with the GitHub Pages link after deploy*
+🎮 [Play online](https://hohnhenrique.github.io/minesweeper)
 
 ## Features
 
